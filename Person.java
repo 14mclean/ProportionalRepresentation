@@ -28,4 +28,29 @@ class Person
     {
         this.choiceOrder[place] = choice;
     }
+
+    String getChoice(int place)
+    {
+        return this.choiceOrder[place];
+    }
+
+    int getHappiness(String choice)
+    {
+        if(choice == this.veto)
+        {
+            return -1;
+        }
+        else
+        {
+            for(int count = 0; count < this.choiceOrder.length; count++)
+            {
+                if( this.choiceOrder[count] == choice)
+                {
+                    return this.choiceOrder.length + 1 - count;
+                }
+            }
+
+            return 0;
+        }
+    }
 }
