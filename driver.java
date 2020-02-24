@@ -40,20 +40,14 @@ public class driver
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
-        int numPeople = 0, numOptions = 0;
-        String[] names = new String[numPeople];
-
-        // Collect num of people, different options & people's orders
+        int numPeople = 0;
 
         System.out.println("How many people: ");
         numPeople = scan.nextInt();
         Person[] people = new Person[numPeople];
+        String[] options = new String[numPeople];
 
-        System.out.println("How many choices: ");
-        numOptions = scan.nextInt();
-        String[] options = new String[numOptions];
-
-        for(int count = 0; count < numOptions; count++)
+        for(int count = 0; count < numPeople; count++)
         {
             System.out.println("What is option " + count + ": ");
             options[count] = new String(scan.next());
@@ -62,9 +56,9 @@ public class driver
         for(int count = 0; count < numPeople; count++)
         {
             System.out.println("\nWho is person " + count + ": ");
-            people[count] = new Person(scan.next(), numOptions);
+            people[count] = new Person(scan.next(), numPeople);
 
-            for(int count2 = 0; count2 < numOptions; count2++)
+            for(int count2 = 0; count2 < numPeople; count2++)
             {
                 System.out.println("What place is " + options[count2] + ": ");
                 people[count].setChoice(options[count2], scan.nextInt()-1);
@@ -94,7 +88,7 @@ public class driver
         permute(temp, 0, end);
 
         int topHappiness = 0;
-        Person[] topHappinessP = new Person[numPeople];
+        int topHappinessIndex = 0;
         
         for(int count = 0, happiness = 0; count < end.size(); count++)
         {
@@ -105,14 +99,14 @@ public class driver
             }
             if(happiness > topHappiness)
             {
-                topHappinessP = end.get(count);
+                topHappinessIndex = count;
             }
         }
 
         System.out.println("-----Results-----");
         for(int count = 0; count < numPeople; count++)
         {
-            System.out.println(options[count] + topHappinessP[count].getName());
+            System.out.println(options[count] + end.get(topHappinessIndex)[count].getName());
         }
     }
 }
