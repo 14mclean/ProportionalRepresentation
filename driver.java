@@ -76,6 +76,8 @@ public class driver
             }
         }
 
+        scan.close();
+
         System.out.println("\n-----Starting selection process-----\n");
 
         List<Person> temp = new ArrayList<Person>();
