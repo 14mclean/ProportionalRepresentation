@@ -3,13 +3,15 @@ import java.util.Scanner;
 public class Person
 {
     private int[] roomOrder;
-    private String name;
+    private String name  = new String();
     private int numRooms;
     private Scanner sc;
 
     Person(String name, int numRooms)
     {
         this.numRooms = numRooms;
+        roomOrder = new int[numRooms];
+        this.name = name;
     }
 
     void setChoices()
@@ -17,7 +19,7 @@ public class Person
         sc = new Scanner(System.in);
         for(int count = 0; count < numRooms; count++)
         {
-            System.out.println("What room is your " + count + " pick");
+            System.out.println("What room is your " + (count+1) + " pick");
             roomOrder[count] = sc.nextInt();
         }
         sc = null;
@@ -34,7 +36,7 @@ public class Person
         {
             if(roomOrder[count] == currentRoom)
             {
-                return count;
+                return roomOrder.length - count+1;
             }
         }
         return -1;
