@@ -45,9 +45,9 @@ public class ChooserLauncher
         
         for(int count = (accommodationPerms.length-1); count >= 0; count--)
         {
-            for(int count2 = 1; count2 <= count; count++)
+            for(int count2 = 1; count2 <= count; count2++)
             {
-                if(accommodationPerms[count2 - count].getTotalHappiness() > accommodationPerms[count].getTotalHappiness())
+                if(accommodationPerms[count2 - 1].getTotalHappiness() > accommodationPerms[count].getTotalHappiness())
                 {
                     Accommodation temp = accommodationPerms[count2];
                     accommodationPerms[count2-1] = accommodationPerms[count2];
@@ -55,15 +55,15 @@ public class ChooserLauncher
                 }
             }
         }
-        System.out.println("Sorted");
+
         for(int count = 0; count < accommodationPerms.length; count++)
         {
+            System.out.print("\n");
             System.out.print(accommodationPerms[count].getTotalHappiness() + ": ");
-            for(int count2 = 0; count2 < permutations.size(); count2++)
+            for(int count2 = 0; count2 < permutations.get(count).length; count2++)
             {
-                System.out.print(permutations.get(count)[count2].getName() + ":" + accommodationPerms[count].getPersonHappiness(permutations.get(count)[count2]));
+                System.out.print(permutations.get(count)[count2].getName() + ":" + accommodationPerms[count].getPersonHappiness(permutations.get(count)[count2]) + " ");
             }
-            System.out.println("\n");
         }
     }
 
@@ -71,9 +71,9 @@ public class ChooserLauncher
     {
         if(size == 1)
         {
+            list.add(new Person[n]);
             for(int count = 0; count < n; count++)
             {
-                list.add(new Person[n]);
                 list.get(list.size()-1)[count] = array[count];
                 //System.out.print(array[count].getName() + ", ");
             }

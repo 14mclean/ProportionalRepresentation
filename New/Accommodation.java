@@ -39,6 +39,19 @@ public class Accommodation
                 return allRooms[count].getHappiness();
             }
         }
+        System.out.println("Person not found");
         return -1;
+    }
+
+    String getPersonName(Person person)
+    {
+        for(int count = 0; count < numRooms; count++)
+        {
+            if(allRooms[count].getOccupant() == person)
+            {
+                return allRooms[count].getOccupant().getName();
+            }
+        }
+        return ""; 
     }
 }

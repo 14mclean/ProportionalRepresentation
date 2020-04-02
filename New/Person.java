@@ -36,7 +36,7 @@ public class Person
         {
             if(roomOrder[count] == currentRoom)
             {
-                return roomOrder.length - count+1;
+                return roomOrder.length - (count+1);
             }
         }
         return -1;
