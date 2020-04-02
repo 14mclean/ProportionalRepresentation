@@ -32,6 +32,7 @@ public class ChooserLauncher
             tempName = null;
         }
 
+        sc.close();
         sc = null;
 
         // recurse to find highest happiness
